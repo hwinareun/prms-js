@@ -66,11 +66,6 @@ export function addNewHistory(newHistory) {
 
 export function removeHistory(dateId, itemId) {
   try {
-    // TODO:
-    /**
-     * - store의 detailList 새로 갱신
-     * - store.currentFunds 새로 갱신
-     */
     store.detailList[dateId] = store.detailList[dateId].filter(({id}) => {
       if(id !== Number(itemId)){
         store.currentFunds += amount;
