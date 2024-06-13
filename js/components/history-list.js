@@ -58,7 +58,7 @@ export function renderHistoryList() {
                 </p>
               </div>
             </div>
-            <div class="delete-section">
+            <div class="delete-section" data-dateId = ${dateId} data-itemId = ${itemId}>
               <button class="delete-button">🗑</button>
             </div>
           </section>
