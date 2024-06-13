@@ -50,7 +50,6 @@ export function initStore() {
 export function addNewHistory(newHistory) {
   try {
     if(store.detailList[todayId]){
-      store.detailList[todayId] = 
       store.detailList[todayId].push(newHistory);
     } else {
       store.detailList[todayId] = [newHistory];

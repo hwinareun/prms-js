@@ -1,5 +1,5 @@
-import { renderCurrentAsset } from "../components/current-asset";
-import { store, removeHistory } from "../store";
+import { renderCurrentAsset } from "../components/current-asset.js";
+import { store, removeHistory } from "../store.js";
 
 const $sectionHistory = document.querySelector(".history");
 
@@ -31,10 +31,6 @@ function reRender() {
 }
 
 export function renderHistoryList() {
-  // TODO: 오름차순으로 목록 나열
-  // TODO: 항목의 시간 포맷 변경: `HH:mm`
-  // TODO: 금액 콤마 포맷 맞추기
-
   $sectionHistory.innerHTML = store.dateList
     .map(({ date, id: dateId }) => {
       const detail = store.detailList[dateId];
@@ -43,7 +39,8 @@ export function renderHistoryList() {
       return `<article class="history-per-day">
       <p class="history-date">2021년 12월 1일</p>
       ${
-        detail.map(({description, category, amount, fundsAtTheTime, createAt}) => {
+        detail.sort((a,b) => b-a)
+        .map(({description, category, amount, fundsAtTheTime, createAt}) => {
           const time = new Date(createAt).toLocaleTimeString('ko-kr',{timeStyle: "short", hourCycle: "h24"});
 
           return  `<section class="history-item">
