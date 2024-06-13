@@ -49,14 +49,14 @@ export function initStore() {
 
 export function addNewHistory(newHistory) {
   try {
-    // TODO:
-    /**
-     * - store의 detailList 새로 갱신
-     * - store.currentFunds 새로 갱신
-     */
-    store.detailList = null;
-    store.currentFunds = null;
+    if(store.detailList[todayId]){
+      store.detailList[todayId] = 
+      store.detailList[todayId].push(newHistory);
+    } else {
+      store.detailList[todayId] = [newHistory];
+    };
 
+    store.currentFunds -= newHistory.amount;
     updateStorage();
     return true;
   } catch (error) {
